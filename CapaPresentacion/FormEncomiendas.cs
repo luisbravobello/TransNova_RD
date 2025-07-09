@@ -1,4 +1,4 @@
-﻿using CapaNegocios;
+using CapaNegocios;
 using CapaDatos;
 using System;
 using System.Data;
@@ -40,6 +40,7 @@ namespace CapaPresentacion
 
             // Cargar las placas en el ComboBox según el tipo seleccionado
             CargarPlacas();
+            EstilizarDataGridView(); // Aplicar estilo al DataGridView
         }
 
         // Llamamos a este método cuando el tipo de transporte cambie
@@ -205,6 +206,8 @@ namespace CapaPresentacion
             this.Close(); // Cerrar el formulario de encomiendas
         }
 
+        
+
         private void btnActualizarEstado_Click(object sender, EventArgs e)
         {
             // Verificar que se haya seleccionado una encomienda y un estado
@@ -239,6 +242,20 @@ namespace CapaPresentacion
                 MessageBox.Show("Error al actualizar el estado de la encomienda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void EstilizarDataGridView()
+        {
+            dgvEncomiendas.BackgroundColor = Color.White;
+            dgvEncomiendas.DefaultCellStyle.ForeColor = Color.Black;
+            dgvEncomiendas.DefaultCellStyle.SelectionBackColor = Color.DarkSlateGray;
+            dgvEncomiendas.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgvEncomiendas.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
+
+            dgvEncomiendas.ColumnHeadersDefaultCellStyle.BackColor = Color.SlateGray;
+            dgvEncomiendas.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvEncomiendas.EnableHeadersVisualStyles = false;
+        }
+
 
     }
 }
