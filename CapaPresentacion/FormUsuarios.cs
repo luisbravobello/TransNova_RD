@@ -1,4 +1,4 @@
-﻿using CapaNegocios;
+using CapaNegocios;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -12,7 +12,8 @@ namespace CapaPresentacion
         public FormUsuarios()
         {
             InitializeComponent();
-            gestorUsuarios = new GestorUsuarios(); // Instanciamos el GestorUsuarios
+            gestorUsuarios = new GestorUsuarios();
+            EstilizarDataGridView();
         }
 
         private void FormUsuarios_Load(object sender, EventArgs e)
@@ -102,5 +103,22 @@ namespace CapaPresentacion
         {
             this.Close(); // Cerrar el formulario
         }
+
+        private void EstilizarDataGridView()
+        {
+            dgvUsuarios.BackgroundColor = Color.White;
+            dgvUsuarios.DefaultCellStyle.ForeColor = Color.Black;
+            dgvUsuarios.DefaultCellStyle.SelectionBackColor = Color.DarkSlateGray;
+            dgvUsuarios.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgvUsuarios.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
+
+            dgvUsuarios.ColumnHeadersDefaultCellStyle.BackColor = Color.SlateGray;
+            dgvUsuarios.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvUsuarios.EnableHeadersVisualStyles = false;
+        }
+
+
     }
+
 }
+
