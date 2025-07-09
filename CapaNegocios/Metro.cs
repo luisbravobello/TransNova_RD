@@ -10,7 +10,7 @@
 
         public override decimal CalcularTarifa()
         {
-            decimal tarifaBase = 500; // Valor base para el Metro
+            decimal tarifaBase = 0; // Valor base para el Metro
             return tarifaBase + ((Estaciones ?? 0) * 2);
         }
 
