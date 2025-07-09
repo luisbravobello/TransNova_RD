@@ -32,6 +32,8 @@
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             grpDatos = new GroupBox();
+            cmbNuevoEstado = new ComboBox();
+            lblEstado = new Label();
             llbEncomiendas = new Label();
             cmbEstado = new ComboBox();
             dateTimePickerFechaEstimada = new DateTimePicker();
@@ -55,8 +57,6 @@
             btnMostrarEncomiendas = new Button();
             btnCancelar = new Button();
             btnActualizarEstado = new Button();
-            lblEstado = new Label();
-            cmbNuevoEstado = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvEncomiendas).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -74,7 +74,7 @@
             dgvEncomiendas.Name = "dgvEncomiendas";
             dgvEncomiendas.ReadOnly = true;
             dgvEncomiendas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvEncomiendas.Size = new Size(1263, 600);
+            dgvEncomiendas.Size = new Size(915, 600);
             dgvEncomiendas.TabIndex = 0;
             // 
             // panel1
@@ -85,7 +85,7 @@
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(418, 723);
+            panel1.Size = new Size(418, 724);
             panel1.TabIndex = 1;
             // 
             // pictureBox1
@@ -129,6 +129,26 @@
             grpDatos.TabIndex = 0;
             grpDatos.TabStop = false;
             grpDatos.Text = "Datos:";
+            // 
+            // cmbNuevoEstado
+            // 
+            cmbNuevoEstado.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbNuevoEstado.FormattingEnabled = true;
+            cmbNuevoEstado.Location = new Point(186, 275);
+            cmbNuevoEstado.Name = "cmbNuevoEstado";
+            cmbNuevoEstado.Size = new Size(200, 23);
+            cmbNuevoEstado.TabIndex = 20;
+            // 
+            // lblEstado
+            // 
+            lblEstado.AutoSize = true;
+            lblEstado.Font = new Font("Century Gothic", 9F);
+            lblEstado.ForeColor = Color.White;
+            lblEstado.Location = new Point(6, 272);
+            lblEstado.Name = "lblEstado";
+            lblEstado.Size = new Size(114, 17);
+            lblEstado.TabIndex = 19;
+            lblEstado.Text = "Actualizar Estado:";
             // 
             // llbEncomiendas
             // 
@@ -357,31 +377,11 @@
             btnActualizarEstado.UseVisualStyleBackColor = true;
             btnActualizarEstado.Click += btnActualizarEstado_Click;
             // 
-            // lblEstado
-            // 
-            lblEstado.AutoSize = true;
-            lblEstado.Font = new Font("Century Gothic", 9F);
-            lblEstado.ForeColor = Color.White;
-            lblEstado.Location = new Point(6, 272);
-            lblEstado.Name = "lblEstado";
-            lblEstado.Size = new Size(114, 17);
-            lblEstado.TabIndex = 19;
-            lblEstado.Text = "Actualizar Estado:";
-            // 
-            // cmbNuevoEstado
-            // 
-            cmbNuevoEstado.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbNuevoEstado.FormattingEnabled = true;
-            cmbNuevoEstado.Location = new Point(186, 275);
-            cmbNuevoEstado.Name = "cmbNuevoEstado";
-            cmbNuevoEstado.Size = new Size(200, 23);
-            cmbNuevoEstado.TabIndex = 20;
-            // 
             // FormEncomiendas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1709, 723);
+            ClientSize = new Size(1374, 724);
             Controls.Add(btnActualizarEstado);
             Controls.Add(btnCancelar);
             Controls.Add(btnMostrarEncomiendas);
