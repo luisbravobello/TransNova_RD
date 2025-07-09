@@ -1,4 +1,4 @@
-﻿using CapaNegocios;
+using CapaNegocios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,6 +42,7 @@ namespace CapaPresentacion
             cmbEstado.Items.Add("En tránsito");
             cmbEstado.Items.Add("Entregado");
             cmbEstado.SelectedIndex = 0; // Por defecto selecciona el primer estado
+            EstilizarDataGridView();
         }
         private void btnGenerarReporte_Click(object sender, EventArgs e)
         {
@@ -77,6 +78,19 @@ namespace CapaPresentacion
             }
         }
 
+        private void EstilizarDataGridView()
+        {
+            dgvReportes.BackgroundColor = Color.White;
+            dgvReportes.DefaultCellStyle.ForeColor = Color.Black;
+            dgvReportes.DefaultCellStyle.SelectionBackColor = Color.DarkSlateGray;
+            dgvReportes.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgvReportes.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
+
+            dgvReportes.ColumnHeadersDefaultCellStyle.BackColor = Color.SlateGray;
+            dgvReportes.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvReportes.EnableHeadersVisualStyles = false;
+        }
+
 
         private void LimpiarCampos()
         {
@@ -92,3 +106,4 @@ namespace CapaPresentacion
         }
     }
 }
+
