@@ -9,7 +9,7 @@
 
         public override decimal CalcularTarifa()
         {
-            decimal tarifaBase = 500; // Establecer una tarifa base
+            decimal tarifaBase = 0; // Establecer una tarifa base
             return tarifaBase + 50;
 
         }

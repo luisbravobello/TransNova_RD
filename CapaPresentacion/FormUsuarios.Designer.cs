@@ -34,11 +34,11 @@
             txtContraseña = new TextBox();
             txtUsuario = new TextBox();
             panelDatos = new Panel();
+            btnCancelar = new Button();
             lblContraseña = new Label();
             lblUsuario = new Label();
             lblRegistro = new Label();
             pictureBox1 = new PictureBox();
-            btnCancelar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             panelDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -74,10 +74,10 @@
             dgvUsuarios.AllowUserToDeleteRows = false;
             dgvUsuarios.BackgroundColor = Color.FromArgb(30, 30, 45);
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsuarios.Location = new Point(314, 51);
+            dgvUsuarios.Location = new Point(314, 36);
             dgvUsuarios.Name = "dgvUsuarios";
             dgvUsuarios.ReadOnly = true;
-            dgvUsuarios.Size = new Size(576, 336);
+            dgvUsuarios.Size = new Size(576, 351);
             dgvUsuarios.TabIndex = 2;
             // 
             // txtContraseña
@@ -111,6 +111,20 @@
             panelDatos.Name = "panelDatos";
             panelDatos.Size = new Size(296, 427);
             panelDatos.TabIndex = 5;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.BackColor = Color.CornflowerBlue;
+            btnCancelar.FlatStyle = FlatStyle.Flat;
+            btnCancelar.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnCancelar.ForeColor = Color.White;
+            btnCancelar.Location = new Point(197, 380);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(91, 23);
+            btnCancelar.TabIndex = 9;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // lblContraseña
             // 
@@ -153,20 +167,6 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
-            // 
-            // btnCancelar
-            // 
-            btnCancelar.BackColor = Color.CornflowerBlue;
-            btnCancelar.FlatStyle = FlatStyle.Flat;
-            btnCancelar.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnCancelar.ForeColor = Color.White;
-            btnCancelar.Location = new Point(197, 380);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(91, 23);
-            btnCancelar.TabIndex = 9;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = false;
-            btnCancelar.Click += btnCancelar_Click;
             // 
             // FormUsuarios
             // 
