@@ -1,6 +1,7 @@
-﻿using System;
-using System.Data;
+﻿using CapaNegocios;
 using Microsoft.Data.SqlClient;
+using System;
+using System.Data;
 
 namespace CapaDatos
 {
@@ -56,6 +57,31 @@ namespace CapaDatos
                 throw new Exception("Error al obtener los usuarios: " + ex.Message);
             }
         }
+
+        public bool ComprobarUsuarioExistente(string usuario)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT COUNT(*) FROM Usuarios WHERE Clave = @Usuario";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Usuario", usuario);
+
+                        conn.Open();
+                        int count = (int)cmd.ExecuteScalar();  // Devuelve la cantidad de registros encontrados
+
+                        return count > 0;  // Si hay uno o más registros con el mismo usuario, significa que ya existe
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al comprobar si el usuario existe: " + ex.Message);
+            }
+        }
+
 
         // Método para eliminar un usuario
         public void EliminarUsuario(int id)

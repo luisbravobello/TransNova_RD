@@ -52,8 +52,21 @@ namespace CapaPresentacion
                 DateTime fechaDesde = dtpDesde.Value;
                 DateTime fechaHasta = dtpHasta.Value;
 
+                // Verificar que las fechas sean correctas
+                if (fechaDesde > fechaHasta)
+                {
+                    MessageBox.Show("La fecha 'Desde' no puede ser mayor que la fecha 'Hasta'.", "Fechas inválidas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 // Obtener los datos de las encomiendas filtradas por estado y fecha
                 DataTable encomiendas = gestorEncomienda.MostrarEncomiendasPorEstadoYFecha(cmbEstado.SelectedItem.ToString(), fechaDesde, fechaHasta);
+
+                if (encomiendas.Rows.Count == 0)
+                {
+                    MessageBox.Show("No hay encomiendas disponibles para las fechas y estado seleccionados.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
 
                 // Mostrar los datos en el DataGridView
                 dgvReportes.DataSource = encomiendas;
@@ -64,6 +77,12 @@ namespace CapaPresentacion
                 // Obtener los datos de las encomiendas por estado (para el gráfico)
                 DataTable estadoEncomiendas = gestorEncomienda.ContarEncomiendasPorEstado(fechaDesde, fechaHasta);
 
+                if (estadoEncomiendas.Rows.Count == 0)
+                {
+                    MessageBox.Show("No hay datos disponibles para el gráfico. Verifique las fechas o el estado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
                 // Llenar el gráfico con los datos
                 foreach (DataRow row in estadoEncomiendas.Rows)
                 {
@@ -72,11 +91,18 @@ namespace CapaPresentacion
                     chartReportes.Series["Estado"].Points.AddXY(estado, cantidad); // Agregar los puntos al gráfico
                 }
             }
+            catch (FormatException ex)
+            {
+                // Capturar errores de formato, como fechas inválidas o datos mal formateados
+                MessageBox.Show("Error de formato: " + ex.Message, "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
+                // Capturar otros errores
                 MessageBox.Show("Error al generar el reporte: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void EstilizarDataGridView()
         {

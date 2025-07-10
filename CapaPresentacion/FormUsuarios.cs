@@ -1,6 +1,7 @@
 using CapaNegocios;
 using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace CapaPresentacion
@@ -18,7 +19,14 @@ namespace CapaPresentacion
 
         private void FormUsuarios_Load(object sender, EventArgs e)
         {
-            MostrarUsuarios(); // Mostrar los usuarios al cargar el formulario
+            try
+            {
+                MostrarUsuarios(); // Mostrar los usuarios al cargar el formulario
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los usuarios: " + ex.Message, "Error de Carga", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -34,6 +42,13 @@ namespace CapaPresentacion
                 // Crear un nuevo usuario
                 string usuario = txtUsuario.Text;
                 string contraseña = txtContraseña.Text;
+
+                // Verificación adicional: Evitar que el nombre de usuario ya esté en uso
+                if (gestorUsuarios.ComprobarUsuarioExistente(usuario))
+                {
+                    MessageBox.Show("El usuario ya existe. Por favor, elija otro nombre de usuario.", "Usuario ya existe", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
                 // Insertar el usuario en la base de datos
                 gestorUsuarios.Insertar(usuario, contraseña);
@@ -53,6 +68,11 @@ namespace CapaPresentacion
             {
                 // Obtener los usuarios desde la base de datos
                 DataTable usuarios = gestorUsuarios.ObtenerUsuarios();
+
+                if (usuarios.Rows.Count == 0)
+                {
+                    MessageBox.Show("No se encontraron usuarios registrados.", "Sin datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
 
                 // Asignar los datos al DataGridView
                 dgvUsuarios.DataSource = usuarios;
@@ -116,9 +136,5 @@ namespace CapaPresentacion
             dgvUsuarios.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dgvUsuarios.EnableHeadersVisualStyles = false;
         }
-
-
     }
-
 }
-

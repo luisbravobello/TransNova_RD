@@ -82,14 +82,14 @@
             // 
             // txtContraseña
             // 
-            txtContraseña.Location = new Point(116, 308);
+            txtContraseña.Location = new Point(105, 342);
             txtContraseña.Name = "txtContraseña";
             txtContraseña.Size = new Size(100, 23);
             txtContraseña.TabIndex = 3;
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(116, 337);
+            txtUsuario.Location = new Point(105, 308);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(100, 23);
             txtUsuario.TabIndex = 4;

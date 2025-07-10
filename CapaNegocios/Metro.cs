@@ -11,7 +11,12 @@
         public override decimal CalcularTarifa()
         {
             decimal tarifaBase = 0; // Valor base para el Metro
-            return tarifaBase + ((Estaciones ?? 0) * 2);
+            decimal tarifaCalculada = tarifaBase + ((Estaciones ?? 0) * 2); // Cada estación suma 2 unidades a la tarifa
+
+            // La tarifa ya estará validada por la propiedad Tarifa en la clase base
+            Tarifa = tarifaCalculada;  // Esto valida que no sea menor a 10
+
+            return Tarifa;
         }
 
         public override string ObtenerDescripcion()
@@ -20,4 +25,3 @@
         }
     }
 }
-

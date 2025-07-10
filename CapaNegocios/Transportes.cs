@@ -27,7 +27,22 @@ namespace CapaNegocios.Transportes
 
         // Propiedades adicionales que solo se aplican a ciertos tipos de transporte
         public string? Placa { get; set; }  // La Placa es opcional (puede ser null)
-        public decimal Tarifa { get; set; }
+        private decimal _tarifa;
+
+        public decimal Tarifa
+        {
+            get => _tarifa;
+            set
+            {
+                // Definir la tarifa mínima que puede ser asignada
+                const decimal tarifaMinima = 10.00m;
+                if (value < tarifaMinima)
+                {
+                    throw new ArgumentException($"La tarifa no puede ser menor a {tarifaMinima:C}."); // O ajustar la tarifa a la mínima
+                }
+                _tarifa = value;
+            }
+        }
 
         // Constructor base
         public Transporte(string tipo)
@@ -41,9 +56,7 @@ namespace CapaNegocios.Transportes
         // Método virtual: puede sobrescribirse si se necesita
         public virtual string ObtenerDescripcion()
         {
-            return $"{Tipo} - Ruta: {Ruta}, Desde: {LugarInicio} hasta {DestinoFin}";
+            return $"{Tipo} - Ruta: {Ruta}, Desde: {LugarInicio} hasta {DestinoFin}, Tarifa: {Tarifa:C}";
         }
-
-      
     }
 }

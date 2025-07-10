@@ -9,12 +9,18 @@
 
         public override decimal CalcularTarifa()
         {
-            return 300.00m; // Tarifa más alta por ser transporte privado
+            decimal tarifaBase = 300.00m; // Establecer una tarifa base para el Taxi
+            decimal tarifaCalculada = tarifaBase;
+
+            // La tarifa ya estará validada por la propiedad Tarifa en la clase base
+            Tarifa = tarifaCalculada;  // Esto valida que no sea menor a 10
+
+            return Tarifa;
         }
 
         public override string ObtenerDescripcion()
         {
-            return $"{base.ObtenerDescripcion()} | Taxi conducido por {Conductor}, Placa: {Placa}";
+            return $"{base.ObtenerDescripcion()} | Conductor: {Conductor}, Placa: {Placa}";
         }
     }
 }

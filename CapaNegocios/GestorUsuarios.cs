@@ -39,6 +39,20 @@ namespace CapaNegocios
             }
         }
 
+        public bool ComprobarUsuarioExistente(string usuario)
+        {
+            try
+            {
+                // Llamamos al método de la capa de datos que consulta si el usuario existe
+                return cdUsuarios.ComprobarUsuarioExistente(usuario);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al comprobar si el usuario existe: " + ex.Message);
+            }
+        }
+
+
         // Método para eliminar un usuario
         public void EliminarUsuario(int id)
         {

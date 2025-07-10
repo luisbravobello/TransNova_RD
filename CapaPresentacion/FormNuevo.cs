@@ -78,6 +78,71 @@ namespace CapaPresentacion
                     return;
                 }
 
+                // Definir la capacidad mínima para cada tipo de transporte
+                int capacidadMinima = 0;
+
+                // Asignar capacidad mínima dependiendo del tipo de transporte
+                if (tipo == "Bus")
+                {
+                    capacidadMinima = 50; // Capacidad mínima para Bus
+                }
+                else if (tipo == "Taxi")
+                {
+                    capacidadMinima = 4; // Capacidad mínima para Taxi
+                }
+                else if (tipo == "Metro")
+                {
+                    capacidadMinima = 100; // Capacidad mínima para Metro
+                }
+
+                // Obtener la capacidad ingresada
+                int capacidadIngresada = Convert.ToInt32(txtCapacidad.Text);
+
+                // Verificar si la capacidad es menor que la mínima
+                if (capacidadIngresada < capacidadMinima)
+                {
+                    // Mostrar una alerta con el MessageBox
+                    MessageBox.Show($"La capacidad mínima para este transporte es {capacidadMinima}. " +
+                                    "Por favor, ingresa una capacidad mayor o igual a la mínima.",
+                                    "Alerta: Capacidad Baja",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+                    return; // No continuar con el guardado si la capacidad es incorrecta
+                }
+
+                // Definir la tarifa mínima para cada tipo de transporte
+                decimal tarifaMinima = 0;
+
+                // Asignar tarifa mínima dependiendo del tipo de transporte
+                if (tipo == "Bus")
+                {
+                    tarifaMinima = 450.00m; // Tarifa mínima para Bus
+                }
+                else if (tipo == "Taxi")
+                {
+                    tarifaMinima = 300.00m; // Tarifa mínima para Taxi
+                }
+                else if (tipo == "Metro")
+                {
+                    tarifaMinima = 10.00m; // Tarifa mínima para Metro
+                }
+
+                // Obtener la tarifa ingresada
+                decimal tarifaIngresada = txtTarifa.Text == string.Empty ? 0 : Convert.ToDecimal(txtTarifa.Text);
+
+                // Verificar si la tarifa es menor que la mínima
+                if (tarifaIngresada < tarifaMinima)
+                {
+                    // Mostrar una alerta con el MessageBox
+                    MessageBox.Show($"La tarifa mínima para este transporte es RD$ {tarifaMinima}. " +
+                                    "Por favor, ingresa una tarifa mayor o igual a la mínima.",
+                                    "Alerta: Tarifa Baja",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+                    return; // No continuar con el guardado si la tarifa es incorrecta
+                }
+
+                // Crear el objeto Transporte con los datos del formulario
                 Transporte transporte;
 
                 if (tipo == "Metro")
@@ -94,7 +159,9 @@ namespace CapaPresentacion
                     {
                         Linea = txtLineaMetro.Text,
                         Estaciones = Convert.ToInt32(txtEstacionesMetro.Text),
-                        CapacidadVagones = Convert.ToInt32(txtVagonesMetro.Text)
+                        CapacidadVagones = Convert.ToInt32(txtVagonesMetro.Text),
+                        Tarifa = tarifaIngresada, // Asignar la tarifa validada
+                        Capacidad = capacidadIngresada // Asignar la capacidad validada
                     };
                 }
                 else if (tipo == "Bus" || tipo == "Taxi")
@@ -106,8 +173,8 @@ namespace CapaPresentacion
                     }
 
                     transporte = tipo == "Bus"
-                        ? new Bus { Placa = txtPlaca.Text, Conductor = txtConductor.Text }
-                        : new Taxi { Placa = txtPlaca.Text, Conductor = txtConductor.Text };
+                        ? new Bus { Placa = txtPlaca.Text, Conductor = txtConductor.Text, Tarifa = tarifaIngresada, Capacidad = capacidadIngresada }
+                        : new Taxi { Placa = txtPlaca.Text, Conductor = txtConductor.Text, Tarifa = tarifaIngresada, Capacidad = capacidadIngresada };
                 }
                 else
                 {
@@ -117,20 +184,12 @@ namespace CapaPresentacion
 
                 // Asignar propiedades comunes
                 transporte.Tipo = tipo;
-                transporte.Capacidad = Convert.ToInt32(txtCapacidad.Text);
                 transporte.Ruta = txtRuta.Text;
                 transporte.LugarInicio = cmbLugarInicio.SelectedItem.ToString();  // Ruta de inicio
                 transporte.DestinoFin = cmbDestinoFinal.SelectedItem.ToString();  // Ruta de destino
                 transporte.HoraInicio = timePickerHoraInicio.Value.TimeOfDay;
 
-                // Calcular tarifa automáticamente usando el método abstracto
-                transporte.Tarifa = transporte.CalcularTarifa();
-                txtTarifa.Text = transporte.Tarifa.ToString("F2");
-
-                // Mostrar mensaje con la tarifa calculada
-                MessageBox.Show($"Tarifa calculada automáticamente: RD${transporte.Tarifa:F2}", "Tarifa Calculada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Insertar o actualizar
+                // Insertar o actualizar el transporte
                 if (transporteId > 0)
                 {
                     gestorTransporte.EditarTransporte(transporteId, transporte.Tipo,
@@ -165,6 +224,7 @@ namespace CapaPresentacion
                 MessageBox.Show("Error al guardar el transporte: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
         private void CargarDatosTransporte(int id)
