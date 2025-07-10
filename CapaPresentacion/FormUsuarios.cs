@@ -128,7 +128,7 @@ namespace CapaPresentacion
         {
             dgvUsuarios.BackgroundColor = Color.White;
             dgvUsuarios.DefaultCellStyle.ForeColor = Color.Black;
-            dgvUsuarios.DefaultCellStyle.SelectionBackColor = Color.DarkSlateGray;
+            dgvUsuarios.DefaultCellStyle.SelectionBackColor = Color.White;
             dgvUsuarios.DefaultCellStyle.SelectionForeColor = Color.White;
             dgvUsuarios.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
 

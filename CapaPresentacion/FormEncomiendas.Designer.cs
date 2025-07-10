@@ -76,6 +76,7 @@
             dgvEncomiendas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEncomiendas.Size = new Size(915, 600);
             dgvEncomiendas.TabIndex = 0;
+            dgvEncomiendas.CellFormatting += dgvEncomiendas_CellFormatting;
             // 
             // panel1
             // 

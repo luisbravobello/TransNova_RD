@@ -274,7 +274,7 @@ namespace CapaPresentacion
         {
             dgvEncomiendas.BackgroundColor = Color.White;
             dgvEncomiendas.DefaultCellStyle.ForeColor = Color.Black;
-            dgvEncomiendas.DefaultCellStyle.SelectionBackColor = Color.DarkSlateGray;
+            dgvEncomiendas.DefaultCellStyle.SelectionBackColor = Color.White;
             dgvEncomiendas.DefaultCellStyle.SelectionForeColor = Color.White;
             dgvEncomiendas.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
 
@@ -283,6 +283,29 @@ namespace CapaPresentacion
             dgvEncomiendas.EnableHeadersVisualStyles = false;
         }
 
+        private void dgvEncomiendas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvEncomiendas.Columns[e.ColumnIndex].Name == "Estado" && e.Value != null)
+            {
+                string estado = e.Value.ToString();
+
+                if (estado == "Pendiente")
+                {
+                    e.CellStyle.BackColor = Color.LightGoldenrodYellow;
+                    e.CellStyle.ForeColor = Color.Black;
+                }
+                else if (estado == "En tránsito")
+                {
+                    e.CellStyle.BackColor = Color.Orange;
+                    e.CellStyle.ForeColor = Color.White;
+                }
+                else if (estado == "Entregado")
+                {
+                    e.CellStyle.BackColor = Color.LightGreen;
+                    e.CellStyle.ForeColor = Color.Black;
+                }
+            }
+        }
 
     }
 }
