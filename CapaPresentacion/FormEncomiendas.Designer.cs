@@ -390,7 +390,7 @@
             Controls.Add(panel1);
             Controls.Add(dgvEncomiendas);
             Name = "FormEncomiendas";
-            Text = "FormEncomiendas";
+            Text = "Encomiendas";
             Load += FormEncomiendas_Load;
             ((System.ComponentModel.ISupportInitialize)dgvEncomiendas).EndInit();
             panel1.ResumeLayout(false);
