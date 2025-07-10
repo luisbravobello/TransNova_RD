@@ -41,6 +41,7 @@ namespace CapaPresentacion
             // Cargar las placas en el ComboBox según el tipo seleccionado
             CargarPlacas();
             EstilizarDataGridView(); // Aplicar estilo al DataGridView
+            AplicarColorEstado();
         }
 
         // Llamamos a este método cuando el tipo de transporte cambie
@@ -206,7 +207,33 @@ namespace CapaPresentacion
             this.Close(); // Cerrar el formulario de encomiendas
         }
 
-        
+        private void AplicarColorEstado()
+        {
+            foreach (DataGridViewRow row in dgvEncomiendas.Rows)
+            {
+                if (row.Cells["Estado"].Value != null)
+                {
+                    string estado = row.Cells["Estado"].Value.ToString();
+
+                    switch (estado)
+                    {
+                        case "Pendiente":
+                            row.DefaultCellStyle.BackColor = Color.LightGoldenrodYellow;
+                            break;
+                        case "En tránsito":
+                            row.DefaultCellStyle.BackColor = Color.LightSalmon;
+                            break;
+                        case "Entregado":
+                            row.DefaultCellStyle.BackColor = Color.LightGreen;
+                            break;
+                        default:
+                            row.DefaultCellStyle.BackColor = Color.White;
+                            break;
+                    }
+                }
+            }
+        }
+
 
         private void btnActualizarEstado_Click(object sender, EventArgs e)
         {
