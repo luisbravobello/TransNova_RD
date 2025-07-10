@@ -12,11 +12,11 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace CapaPresentacion
 {
-    public partial class FormReportes : Form
+    public partial class RegistroReportes : Form
     {
 
         private GestorEncomienda gestorEncomienda;
-        public FormReportes()
+        public RegistroReportes()
         {
             InitializeComponent();
             gestorEncomienda = new GestorEncomienda();

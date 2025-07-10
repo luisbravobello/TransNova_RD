@@ -1,6 +1,6 @@
 ﻿namespace CapaPresentacion
 {
-    partial class FormReportes
+    partial class RegistroReportes
     {
         /// <summary>
         /// Required designer variable.
@@ -202,7 +202,7 @@
             dtpDesde.Size = new Size(200, 23);
             dtpDesde.TabIndex = 0;
             // 
-            // FormReportes
+            // RegistroReportes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -210,8 +210,8 @@
             Controls.Add(panel1);
             Controls.Add(dgvReportes);
             Controls.Add(chartReportes);
-            Name = "FormReportes";
-            Text = "FormReportes";
+            Name = "RegistroReportes";
+            Text = "REGISTRO REPORTES";
             Load += FormReportes_Load;
             ((System.ComponentModel.ISupportInitialize)chartReportes).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvReportes).EndInit();

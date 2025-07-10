@@ -79,6 +79,7 @@
             dgvUsuarios.ReadOnly = true;
             dgvUsuarios.Size = new Size(576, 351);
             dgvUsuarios.TabIndex = 2;
+            dgvUsuarios.CellValueChanged += dgvUsuarios_CellValueChanged;
             // 
             // txtContraseña
             // 

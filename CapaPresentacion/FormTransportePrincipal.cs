@@ -96,7 +96,7 @@ namespace CapaPresentacion
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            FormNuevo formnuevo = new FormNuevo();
+            Transportes formnuevo = new Transportes();
             formnuevo.ShowDialog();
             CargarTransportes();
         }
@@ -108,7 +108,7 @@ namespace CapaPresentacion
                 try
                 {
                     int id = Convert.ToInt32(dgvTransportes.SelectedRows[0].Cells[0].Value);
-                    FormNuevo formNuevo = new FormNuevo(id);
+                    Transportes formNuevo = new Transportes(id);
                     formNuevo.ShowDialog();
                     CargarTransportes();
                 }
@@ -256,7 +256,7 @@ namespace CapaPresentacion
 
         private void btnReportes_Click(object sender, EventArgs e)
         {
-            FormReportes formReportes = new FormReportes();
+            RegistroReportes formReportes = new RegistroReportes();
             formReportes.ShowDialog();
         }
 

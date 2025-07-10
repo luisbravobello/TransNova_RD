@@ -93,7 +93,7 @@
             btnReportes.Name = "btnReportes";
             btnReportes.Size = new Size(184, 23);
             btnReportes.TabIndex = 9;
-            btnReportes.Text = "REPORTES";
+            btnReportes.Text = "REGISTRO REPORTES";
             btnReportes.UseVisualStyleBackColor = false;
             btnReportes.Click += btnReportes_Click;
             // 
@@ -124,7 +124,7 @@
             btnCerrar.FlatStyle = FlatStyle.Flat;
             btnCerrar.Font = new Font("Century Gothic", 9F);
             btnCerrar.ForeColor = Color.White;
-            btnCerrar.Location = new Point(23, 572);
+            btnCerrar.Location = new Point(23, 448);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Size = new Size(184, 23);
             btnCerrar.TabIndex = 6;

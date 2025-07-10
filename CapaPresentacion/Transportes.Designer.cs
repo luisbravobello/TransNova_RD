@@ -1,6 +1,6 @@
 ﻿namespace CapaPresentacion
 {
-    partial class FormNuevo
+    partial class Transportes
     {
         /// <summary>
         /// Required designer variable.
@@ -82,7 +82,7 @@
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(411, 497);
+            panel1.Size = new Size(411, 507);
             panel1.TabIndex = 0;
             // 
             // grpInformacion
@@ -423,18 +423,18 @@
             sqlCommand1.CommandTimeout = 30;
             sqlCommand1.EnableOptimizedParameterBinding = false;
             // 
-            // FormNuevo
+            // Transportes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(839, 497);
+            ClientSize = new Size(839, 507);
             Controls.Add(grpTaxiBus);
             Controls.Add(grpMetro);
             Controls.Add(panel1);
-            Name = "FormNuevo";
+            Name = "Transportes";
             Opacity = 0.95D;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormNuevo";
+            Text = "Transportes";
             Load += FormNuevo_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

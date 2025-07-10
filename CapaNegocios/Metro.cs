@@ -1,27 +1,28 @@
-﻿namespace CapaNegocios.Transportes
+﻿using CapaNegocios.Transportes;
+
+public class Metro : Transporte
 {
-    public class Metro : Transporte
+    public string Linea { get; set; }
+    public int? Estaciones { get; set; }
+    public int? CapacidadVagones { get; set; }
+
+    public Metro() : base("Metro") { }
+
+    // Método para calcular tarifa en Metro
+    public override decimal CalcularTarifa()
     {
-        public string Linea { get; set; }
-        public int? Estaciones { get; set; }
-        public int? CapacidadVagones { get; set; }
+        decimal tarifaBase = 500; // Valor base para el Metro
+        decimal tarifaCalculada = tarifaBase + ((Estaciones ?? 0) * 2); // Cada estación suma 2 unidades a la tarifa
 
-        public Metro() : base("Metro") { }
+        // Asegurarse de que la tarifa cumpla con la validación de la clase base
+        Tarifa = tarifaCalculada;  // Esto valida que no sea menor a 10
 
-        public override decimal CalcularTarifa()
-        {
-            decimal tarifaBase = 0; // Valor base para el Metro
-            decimal tarifaCalculada = tarifaBase + ((Estaciones ?? 0) * 2); // Cada estación suma 2 unidades a la tarifa
+        return Tarifa;
+    }
 
-            // La tarifa ya estará validada por la propiedad Tarifa en la clase base
-            Tarifa = tarifaCalculada;  // Esto valida que no sea menor a 10
-
-            return Tarifa;
-        }
-
-        public override string ObtenerDescripcion()
-        {
-            return $"Metro Línea {Linea} - {Estaciones} estaciones, Tarifa: RD${CalcularTarifa()}";
-        }
+    // Sobrescribir el método ObtenerDescripcion para Metro
+    public override string ObtenerDescripcion()
+    {
+        return $"Metro Línea {Linea} - {Estaciones} estaciones, Tarifa: RD${CalcularTarifa()}";
     }
 }
