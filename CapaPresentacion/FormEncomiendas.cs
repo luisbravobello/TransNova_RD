@@ -2,9 +2,8 @@ using CapaNegocios;
 using CapaDatos;
 using System;
 using System.Data;
-using System.Drawing;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using CapaNegocios;
 
 namespace CapaPresentacion
 {
@@ -16,15 +15,9 @@ namespace CapaPresentacion
         public FormEncomiendas()
         {
             InitializeComponent();
+            gestorEncomienda = new GestorEncomienda(); // Instanciamos el GestorEncomienda
 
-            // Asociamos los eventos a los controles
-            txtCodigoSeguimiento.KeyPress += txtCodigoSeguimiento_KeyPress;
-            txtRemitente.KeyPress += txtRemitente_KeyPress;
-            txtDestinatario.KeyPress += txtDestinatario_KeyPress;
-            txtDireccionEntrega.KeyPress += txtDireccionEntrega_KeyPress;
-            numPeso.Validating += numPeso_Validating; // Para el control de peso
         }
-
 
         private void FormEncomiendas_Load(object sender, EventArgs e)
         {
@@ -33,6 +26,7 @@ namespace CapaPresentacion
             cmbTipoTransporte.Items.Add("Taxi");
             cmbTipoTransporte.Items.Add("Metro");
             cmbTipoTransporte.SelectedIndex = 0; // Seleccionar el primer tipo por defecto
+
 
             cmbEstado.Items.Add("Pendiente");
             cmbEstado.Items.Add("En tránsito");
@@ -43,6 +37,12 @@ namespace CapaPresentacion
             cmbNuevoEstado.Items.Add("En tránsito");
             cmbNuevoEstado.Items.Add("Entregado");
             cmbNuevoEstado.SelectedIndex = 0; // Seleccionar el primer estado por defecto
+
+            txtCodigoSeguimiento.KeyPress += txtCodigoSeguimiento_KeyPress;
+            txtRemitente.KeyPress += txtRemitente_KeyPress;
+            txtDestinatario.KeyPress += txtDestinatario_KeyPress;
+            txtDireccionEntrega.KeyPress += txtDireccionEntrega_KeyPress;
+            numPeso.Validating += numPeso_Validating;
 
             // Cargar las placas en el ComboBox según el tipo seleccionado
             CargarPlacas();
@@ -78,57 +78,6 @@ namespace CapaPresentacion
                 // Seleccionar la primera placa por defecto
                 if (cmbPlaca.Items.Count > 0)
                     cmbPlaca.SelectedIndex = 0;
-            }
-        }
-
-        // Validaciones de caracteres permitidos en los campos
-        private void txtCodigoSeguimiento_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Permitir solo letras y números en el Código de Seguimiento
-            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;  // Bloquear el carácter ingresado
-            }
-        }
-
-        private void txtRemitente_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Permitir solo letras y espacio en blanco para el Remitente
-            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-                MessageBox.Show("Solo se permiten letras y espacios.", "Entrada inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void txtDestinatario_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Permitir solo letras y espacio en blanco para el Destinatario
-            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-                MessageBox.Show("Solo se permiten letras y espacios.", "Entrada inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void txtDireccionEntrega_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Permitir letras, números, y algunos caracteres especiales como guiones, comas y puntos
-            string caracteresPermitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.-/ ";
-            if (!caracteresPermitidos.Contains(e.KeyChar.ToString()) && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-                MessageBox.Show("La dirección solo puede contener letras, números y algunos caracteres especiales como comas, puntos y guiones.", "Entrada inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void numPeso_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            // Validar que el peso sea mayor que 0
-            if (numPeso.Value <= 0)
-            {
-                MessageBox.Show("El peso debe ser mayor a 0.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                e.Cancel = true; // Evitar que el formulario se cierre si el peso es 0 o menor
             }
         }
 
@@ -246,52 +195,6 @@ namespace CapaPresentacion
             }
         }
 
-        // Método para aplicar el estilo al DataGridView
-        private void EstilizarDataGridView()
-        {
-            // Configuración de estilo general para el DataGridView
-            dgvEncomiendas.BackgroundColor = Color.White;
-            dgvEncomiendas.DefaultCellStyle.ForeColor = Color.Black;
-            dgvEncomiendas.DefaultCellStyle.SelectionBackColor = Color.White;
-            dgvEncomiendas.DefaultCellStyle.SelectionForeColor = Color.Black;
-            dgvEncomiendas.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
-
-            dgvEncomiendas.ColumnHeadersDefaultCellStyle.BackColor = Color.SlateGray;
-            dgvEncomiendas.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgvEncomiendas.EnableHeadersVisualStyles = false;
-        }
-
-        // Método para aplicar colores de fondo según el estado de la encomienda
-        private void AplicarColorEstado()
-        {
-            // Recorremos todas las filas del DataGridView para aplicar el color correspondiente
-            foreach (DataGridViewRow row in dgvEncomiendas.Rows)
-            {
-                // Aseguramos que la celda de "Estado" no sea nula
-                if (row.Cells["Estado"].Value != null)
-                {
-                    string estado = row.Cells["Estado"].Value.ToString();
-
-                    // Cambiar el color de fondo de acuerdo al estado de la encomienda
-                    switch (estado)
-                    {
-                        case "Pendiente":
-                            row.DefaultCellStyle.BackColor = Color.LightGoldenrodYellow; // Color amarillo claro
-                            break;
-                        case "En tránsito":
-                            row.DefaultCellStyle.BackColor = Color.LightSalmon; // Color naranja claro
-                            break;
-                        case "Entregado":
-                            row.DefaultCellStyle.BackColor = Color.LightGreen; // Color verde claro
-                            break;
-                        default:
-                            row.DefaultCellStyle.BackColor = Color.White; // Si no es ninguno de los anteriores, color blanco
-                            break;
-                    }
-                }
-            }
-        }
-
 
 
         // Limpiar los campos del formulario
@@ -309,5 +212,156 @@ namespace CapaPresentacion
         {
             this.Close(); // Cerrar el formulario de encomiendas
         }
+
+        private void AplicarColorEstado()
+        {
+            foreach (DataGridViewRow row in dgvEncomiendas.Rows)
+            {
+                if (row.Cells["Estado"].Value != null)
+                {
+                    string estado = row.Cells["Estado"].Value.ToString();
+
+                    switch (estado)
+                    {
+                        case "Pendiente":
+                            row.DefaultCellStyle.BackColor = Color.LightGoldenrodYellow;
+                            break;
+                        case "En tránsito":
+                            row.DefaultCellStyle.BackColor = Color.LightSalmon;
+                            break;
+                        case "Entregado":
+                            row.DefaultCellStyle.BackColor = Color.LightGreen;
+                            break;
+                        default:
+                            row.DefaultCellStyle.BackColor = Color.White;
+                            break;
+                    }
+                }
+            }
+        }
+
+        // Validaciones de caracteres permitidos en los campos
+        private void txtCodigoSeguimiento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permitir solo letras y números en el Código de Seguimiento
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;  // Bloquear el carácter ingresado
+            }
+        }
+
+        private void txtRemitente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permitir solo letras y espacio en blanco para el Remitente
+            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten letras y espacios.", "Entrada inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtDestinatario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permitir solo letras y espacio en blanco para el Destinatario
+            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten letras y espacios.", "Entrada inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtDireccionEntrega_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permitir letras, números, y algunos caracteres especiales como guiones, comas y puntos
+            string caracteresPermitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.-/ ";
+            if (!caracteresPermitidos.Contains(e.KeyChar.ToString()) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("La dirección solo puede contener letras, números y algunos caracteres especiales como comas, puntos y guiones.", "Entrada inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void numPeso_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // Validar que el peso sea mayor que 0
+            if (numPeso.Value <= 0)
+            {
+                MessageBox.Show("El peso debe ser mayor a 0.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Cancel = true; // Evitar que el formulario se cierre si el peso es 0 o menor
+            }
+        }
+
+        private void btnActualizarEstado_Click(object sender, EventArgs e)
+        {
+            // Verificar que se haya seleccionado una encomienda y un estado
+            if (dgvEncomiendas.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Por favor, seleccione una encomienda para actualizar su estado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cmbNuevoEstado.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor, seleccione un nuevo estado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Obtener el ID de la encomienda seleccionada
+            int idEncomienda = Convert.ToInt32(dgvEncomiendas.SelectedRows[0].Cells["Id"].Value);
+            string nuevoEstado = cmbNuevoEstado.SelectedItem.ToString();
+
+            try
+            {
+                // Llamar al método para actualizar el estado
+                gestorEncomienda.ActualizarEstadoEncomienda(idEncomienda, nuevoEstado);
+
+                MessageBox.Show("Estado de la encomienda actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Actualizar la vista de las encomiendas
+                MostrarEncomiendas(); // Llamar al método para actualizar la lista de encomiendas
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar el estado de la encomienda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void EstilizarDataGridView()
+        {
+            dgvEncomiendas.BackgroundColor = Color.White;
+            dgvEncomiendas.DefaultCellStyle.ForeColor = Color.Black;
+            dgvEncomiendas.DefaultCellStyle.SelectionBackColor = Color.White;
+            dgvEncomiendas.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dgvEncomiendas.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
+
+            dgvEncomiendas.ColumnHeadersDefaultCellStyle.BackColor = Color.SlateGray;
+            dgvEncomiendas.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvEncomiendas.EnableHeadersVisualStyles = false;
+        }
+
+        private void dgvEncomiendas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvEncomiendas.Columns[e.ColumnIndex].Name == "Estado" && e.Value != null)
+            {
+                string estado = e.Value.ToString();
+
+                if (estado == "Pendiente")
+                {
+                    e.CellStyle.BackColor = Color.LightGoldenrodYellow;
+                    e.CellStyle.ForeColor = Color.Black;
+                }
+                else if (estado == "En tránsito")
+                {
+                    e.CellStyle.BackColor = Color.Orange;
+                    e.CellStyle.ForeColor = Color.White;
+                }
+                else if (estado == "Entregado")
+                {
+                    e.CellStyle.BackColor = Color.LightGreen;
+                    e.CellStyle.ForeColor = Color.Black;
+                }
+            }
+        }
+
     }
 }

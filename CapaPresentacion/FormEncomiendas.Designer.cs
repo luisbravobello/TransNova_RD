@@ -102,8 +102,6 @@
             // 
             // grpDatos
             // 
-            grpDatos.Controls.Add(cmbNuevoEstado);
-            grpDatos.Controls.Add(lblEstado);
             grpDatos.Controls.Add(llbEncomiendas);
             grpDatos.Controls.Add(cmbEstado);
             grpDatos.Controls.Add(dateTimePickerFechaEstimada);
@@ -135,17 +133,17 @@
             // 
             cmbNuevoEstado.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbNuevoEstado.FormattingEnabled = true;
-            cmbNuevoEstado.Location = new Point(186, 275);
+            cmbNuevoEstado.Location = new Point(1132, 665);
             cmbNuevoEstado.Name = "cmbNuevoEstado";
-            cmbNuevoEstado.Size = new Size(200, 23);
+            cmbNuevoEstado.Size = new Size(157, 23);
             cmbNuevoEstado.TabIndex = 20;
             // 
             // lblEstado
             // 
             lblEstado.AutoSize = true;
             lblEstado.Font = new Font("Century Gothic", 9F);
-            lblEstado.ForeColor = Color.White;
-            lblEstado.Location = new Point(6, 272);
+            lblEstado.ForeColor = Color.Black;
+            lblEstado.Location = new Point(1012, 668);
             lblEstado.Name = "lblEstado";
             lblEstado.Size = new Size(114, 17);
             lblEstado.TabIndex = 19;
@@ -156,7 +154,7 @@
             llbEncomiendas.AutoSize = true;
             llbEncomiendas.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             llbEncomiendas.ForeColor = Color.White;
-            llbEncomiendas.Location = new Point(115, 26);
+            llbEncomiendas.Location = new Point(129, -3);
             llbEncomiendas.Name = "llbEncomiendas";
             llbEncomiendas.Size = new Size(150, 22);
             llbEncomiendas.TabIndex = 18;
@@ -166,35 +164,35 @@
             // 
             cmbEstado.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbEstado.FormattingEnabled = true;
-            cmbEstado.Location = new Point(186, 336);
+            cmbEstado.Location = new Point(187, 356);
             cmbEstado.Name = "cmbEstado";
             cmbEstado.Size = new Size(200, 23);
             cmbEstado.TabIndex = 17;
             // 
             // dateTimePickerFechaEstimada
             // 
-            dateTimePickerFechaEstimada.Location = new Point(186, 304);
+            dateTimePickerFechaEstimada.Location = new Point(186, 318);
             dateTimePickerFechaEstimada.Name = "dateTimePickerFechaEstimada";
             dateTimePickerFechaEstimada.Size = new Size(200, 23);
             dateTimePickerFechaEstimada.TabIndex = 16;
             // 
             // numPeso
             // 
-            numPeso.Location = new Point(186, 241);
+            numPeso.Location = new Point(186, 276);
             numPeso.Name = "numPeso";
             numPeso.Size = new Size(199, 23);
             numPeso.TabIndex = 15;
             // 
             // txtDireccionEntrega
             // 
-            txtDireccionEntrega.Location = new Point(186, 212);
+            txtDireccionEntrega.Location = new Point(186, 230);
             txtDireccionEntrega.Name = "txtDireccionEntrega";
             txtDireccionEntrega.Size = new Size(199, 23);
             txtDireccionEntrega.TabIndex = 14;
             // 
             // txtDestinatario
             // 
-            txtDestinatario.Location = new Point(186, 183);
+            txtDestinatario.Location = new Point(186, 189);
             txtDestinatario.Name = "txtDestinatario";
             txtDestinatario.Size = new Size(199, 23);
             txtDestinatario.TabIndex = 13;
@@ -219,7 +217,7 @@
             // 
             cmbTipoTransporte.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTipoTransporte.FormattingEnabled = true;
-            cmbTipoTransporte.Location = new Point(186, 93);
+            cmbTipoTransporte.Location = new Point(186, 76);
             cmbTipoTransporte.Name = "cmbTipoTransporte";
             cmbTipoTransporte.Size = new Size(199, 23);
             cmbTipoTransporte.TabIndex = 10;
@@ -227,7 +225,7 @@
             // 
             // txtCodigoSeguimiento
             // 
-            txtCodigoSeguimiento.Location = new Point(186, 64);
+            txtCodigoSeguimiento.Location = new Point(186, 42);
             txtCodigoSeguimiento.Name = "txtCodigoSeguimiento";
             txtCodigoSeguimiento.Size = new Size(199, 23);
             txtCodigoSeguimiento.TabIndex = 9;
@@ -237,7 +235,7 @@
             lblestadopaquete.AutoSize = true;
             lblestadopaquete.Font = new Font("Century Gothic", 9F);
             lblestadopaquete.ForeColor = Color.White;
-            lblestadopaquete.Location = new Point(4, 336);
+            lblestadopaquete.Location = new Point(4, 365);
             lblestadopaquete.Name = "lblestadopaquete";
             lblestadopaquete.Size = new Size(128, 17);
             lblestadopaquete.TabIndex = 8;
@@ -248,7 +246,7 @@
             lblFechaEstimada.AutoSize = true;
             lblFechaEstimada.Font = new Font("Century Gothic", 9F);
             lblFechaEstimada.ForeColor = Color.White;
-            lblFechaEstimada.Location = new Point(0, 310);
+            lblFechaEstimada.Location = new Point(5, 324);
             lblFechaEstimada.Name = "lblFechaEstimada";
             lblFechaEstimada.Size = new Size(107, 17);
             lblFechaEstimada.TabIndex = 7;
@@ -259,7 +257,7 @@
             lblPeso.AutoSize = true;
             lblPeso.Font = new Font("Century Gothic", 9F);
             lblPeso.ForeColor = Color.White;
-            lblPeso.Location = new Point(3, 234);
+            lblPeso.Location = new Point(3, 277);
             lblPeso.Name = "lblPeso";
             lblPeso.Size = new Size(116, 17);
             lblPeso.TabIndex = 6;
@@ -270,7 +268,7 @@
             lblDireccionEntrega.AutoSize = true;
             lblDireccionEntrega.Font = new Font("Century Gothic", 9F);
             lblDireccionEntrega.ForeColor = Color.White;
-            lblDireccionEntrega.Location = new Point(4, 208);
+            lblDireccionEntrega.Location = new Point(1, 232);
             lblDireccionEntrega.Name = "lblDireccionEntrega";
             lblDireccionEntrega.Size = new Size(151, 17);
             lblDireccionEntrega.TabIndex = 5;
@@ -281,7 +279,7 @@
             lblDestinatario.AutoSize = true;
             lblDestinatario.Font = new Font("Century Gothic", 9F);
             lblDestinatario.ForeColor = Color.White;
-            lblDestinatario.Location = new Point(3, 184);
+            lblDestinatario.Location = new Point(3, 189);
             lblDestinatario.Name = "lblDestinatario";
             lblDestinatario.Size = new Size(84, 17);
             lblDestinatario.TabIndex = 4;
@@ -303,29 +301,29 @@
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 9F);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(5, 94);
+            label3.Location = new Point(6, 76);
             label3.Name = "label3";
-            label3.Size = new Size(32, 17);
+            label3.Size = new Size(119, 17);
             label3.TabIndex = 2;
-            label3.Text = "Tipo";
+            label3.Text = "Tipo de Transporte:";
             // 
             // lblPlaca
             // 
             lblPlaca.AutoSize = true;
             lblPlaca.Font = new Font("Century Gothic", 9F);
             lblPlaca.ForeColor = Color.White;
-            lblPlaca.Location = new Point(5, 118);
+            lblPlaca.Location = new Point(5, 111);
             lblPlaca.Name = "lblPlaca";
-            lblPlaca.Size = new Size(42, 17);
+            lblPlaca.Size = new Size(45, 17);
             lblPlaca.TabIndex = 1;
-            lblPlaca.Text = "Placa";
+            lblPlaca.Text = "Placa:";
             // 
             // Codigo
             // 
             Codigo.AutoSize = true;
             Codigo.Font = new Font("Century Gothic", 9F);
             Codigo.ForeColor = Color.White;
-            Codigo.Location = new Point(5, 64);
+            Codigo.Location = new Point(4, 42);
             Codigo.Name = "Codigo";
             Codigo.Size = new Size(147, 17);
             Codigo.TabIndex = 0;
@@ -359,7 +357,7 @@
             // 
             btnCancelar.BackColor = Color.CornflowerBlue;
             btnCancelar.FlatStyle = FlatStyle.Flat;
-            btnCancelar.Location = new Point(880, 665);
+            btnCancelar.Location = new Point(908, 665);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
             btnCancelar.TabIndex = 4;
@@ -383,7 +381,9 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1374, 721);
+            Controls.Add(cmbNuevoEstado);
             Controls.Add(btnActualizarEstado);
+            Controls.Add(lblEstado);
             Controls.Add(btnCancelar);
             Controls.Add(btnMostrarEncomiendas);
             Controls.Add(btnGuardar);
@@ -399,6 +399,7 @@
             grpDatos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numPeso).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
