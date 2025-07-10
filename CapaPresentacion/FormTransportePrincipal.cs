@@ -68,7 +68,7 @@ namespace CapaPresentacion
             dgvTransportes.BackgroundColor = Color.White;
             dgvTransportes.DefaultCellStyle.ForeColor = Color.Black;
             dgvTransportes.DefaultCellStyle.SelectionBackColor = Color.White;
-            dgvTransportes.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgvTransportes.DefaultCellStyle.SelectionForeColor = Color.Black;
             dgvTransportes.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
 
             dgvTransportes.ColumnHeadersDefaultCellStyle.BackColor = Color.SlateGray;

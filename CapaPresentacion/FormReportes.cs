@@ -109,7 +109,7 @@ namespace CapaPresentacion
             dgvReportes.BackgroundColor = Color.White;
             dgvReportes.DefaultCellStyle.ForeColor = Color.Black;
             dgvReportes.DefaultCellStyle.SelectionBackColor = Color.White;
-            dgvReportes.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgvReportes.DefaultCellStyle.SelectionForeColor = Color.Black;
             dgvReportes.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
 
             dgvReportes.ColumnHeadersDefaultCellStyle.BackColor = Color.SlateGray;

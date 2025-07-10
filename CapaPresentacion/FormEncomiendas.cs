@@ -275,7 +275,7 @@ namespace CapaPresentacion
             dgvEncomiendas.BackgroundColor = Color.White;
             dgvEncomiendas.DefaultCellStyle.ForeColor = Color.Black;
             dgvEncomiendas.DefaultCellStyle.SelectionBackColor = Color.White;
-            dgvEncomiendas.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgvEncomiendas.DefaultCellStyle.SelectionForeColor = Color.Black;
             dgvEncomiendas.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
 
             dgvEncomiendas.ColumnHeadersDefaultCellStyle.BackColor = Color.SlateGray;
