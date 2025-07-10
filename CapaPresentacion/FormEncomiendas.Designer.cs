@@ -86,7 +86,7 @@
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(418, 724);
+            panel1.Size = new Size(418, 721);
             panel1.TabIndex = 1;
             // 
             // pictureBox1
@@ -382,7 +382,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1374, 724);
+            ClientSize = new Size(1374, 721);
             Controls.Add(btnActualizarEstado);
             Controls.Add(btnCancelar);
             Controls.Add(btnMostrarEncomiendas);

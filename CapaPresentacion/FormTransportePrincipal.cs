@@ -105,16 +105,29 @@ namespace CapaPresentacion
         {
             if (dgvTransportes.SelectedRows.Count > 0)
             {
-                try
+                // Confirmación antes de editar
+                var confirmResult = MessageBox.Show("¿Estás seguro que deseas editar este transporte?",
+                                                    "Confirmar edición",
+                                                    MessageBoxButtons.YesNo,
+                                                    MessageBoxIcon.Question);
+
+                if (confirmResult == DialogResult.Yes)
                 {
-                    int id = Convert.ToInt32(dgvTransportes.SelectedRows[0].Cells[0].Value);
-                    Transportes formNuevo = new Transportes(id);
-                    formNuevo.ShowDialog();
-                    CargarTransportes();
+                    try
+                    {
+                        int id = Convert.ToInt32(dgvTransportes.SelectedRows[0].Cells[0].Value);
+                        Transportes formNuevo = new Transportes(id);
+                        formNuevo.ShowDialog();  // Mostrar el formulario para editar
+                        CargarTransportes();  // Recargar la lista de transportes después de la edición
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Hubo un error al intentar editar el transporte: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show($"Hubo un error al intentar editar el transporte: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("La edición fue cancelada.", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
@@ -123,24 +136,36 @@ namespace CapaPresentacion
             }
         }
 
+
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             if (dgvTransportes.SelectedRows.Count > 0)
             {
-                int id = Convert.ToInt32(dgvTransportes.SelectedRows[0].Cells[0].Value);
-                var confirmResult = MessageBox.Show("¿Eliminar este transporte?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                // Confirmación antes de eliminar
+                var confirmResult = MessageBox.Show("¿Estás seguro que deseas eliminar este transporte?",
+                                                    "Confirmar eliminación",
+                                                    MessageBoxButtons.YesNo,
+                                                    MessageBoxIcon.Question);
 
                 if (confirmResult == DialogResult.Yes)
                 {
+                    int id = Convert.ToInt32(dgvTransportes.SelectedRows[0].Cells[0].Value);
+
                     try
                     {
+                        // Eliminar transporte
                         gestorTransporte.EliminarTransporte(id);
-                        CargarTransportes();
+                        MessageBox.Show("Transporte eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CargarTransportes();  // Recargar la lista de transportes
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Error al eliminar transporte: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"Error al eliminar el transporte: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                }
+                else
+                {
+                    MessageBox.Show("El transporte no fue eliminado.", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
@@ -150,6 +175,7 @@ namespace CapaPresentacion
         }
 
 
+
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
 
@@ -157,7 +183,19 @@ namespace CapaPresentacion
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            // Mostrar una ventana de confirmación antes de cerrar
+            var confirmResult = MessageBox.Show("¿Estás seguro que deseas salir?", "Confirmar salida", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            // Si el usuario selecciona "Sí", cerrar la aplicación
+            if (confirmResult == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            else
+            {
+                // Si el usuario selecciona "No", no hacer nada y dejar el formulario abierto
+                return;
+            }
         }
 
         private void cmbTipo_SelectedIndexChanged_1(object sender, EventArgs e)
