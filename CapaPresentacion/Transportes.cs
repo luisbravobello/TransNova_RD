@@ -39,16 +39,16 @@ namespace CapaPresentacion
         {
             var lugares = new List<string>
             {
-              "Santo Domingo", "Santiago", "Punta Cana", "Puerto Plata", "La Romana", "Moca",
-               "San Francisco de Macorís", "San Cristóbal", "Barahona", "La Vega", "Boca Chica",
-               "Higuey", "Samaná", "Jarabacoa", "Juan Dolio", "Constanza", "Las Terrenas", "Baní",
-               "Monte Cristi", "Pedernales", "El Seibo", "Azua", "San Juan de la Maguana",
-               "San Pedro de Macorís", "Cotuí", "Hato Mayor del Rey", "Cabo Rojo",
-               "Las Galeras", "Sabana de la Mar", "Santiago Rodríguez", "Valverde Mao",
-               "Comendador", "Sánchez", "Tamayo", "Sabana Yegua", "Los Alcarrizos", "Los Cacaos",
-               "Sosúa", "Cabarete", "Río San Juan", "El Catey", "Punta Rucia", "Pueblo Viejo",
-               "La Otra Banda", "La Altagracia"
+               "Azua", "Baní", "Barahona", "Boca Chica", "Cabo Rojo", "Cabarete", "Cotuí", "Comendador",
+               "Constanza", "El Catey", "El Seibo", "Hato Mayor del Rey", "Higuey", "Jarabacoa",
+               "Juan Dolio", "La Altagracia", "La Romana", "La Vega", "Las Galeras", "Las Terrenas",
+               "Los Alcarrizos", "Los Cacaos", "La Otra Banda", "Moca", "Monte Cristi", "Pedernales",
+               "Puerto Plata", "Pueblo Viejo", "Punta Cana", "Punta Rucia", "Río San Juan",
+               "Sabana de la Mar", "Sabana Yegua", "Samana", "San Cristóbal", "San Francisco de Macorís",
+               "San Juan de la Maguana", "San Pedro de Macorís", "Sánchez", "Santiago", "Santiago Rodríguez",
+               "Santo Domingo", "Sosúa", "Tamayo", "Valverde Mao"
             };
+
 
 
             cmbLugarInicio.Items.AddRange(lugares.ToArray());
@@ -301,7 +301,7 @@ namespace CapaPresentacion
             this.Close();
         }
 
-        // ========= VALIDACIONES KEY PRESS =========
+        
 
         private void SoloLetras(object sender, KeyPressEventArgs e)
         {
