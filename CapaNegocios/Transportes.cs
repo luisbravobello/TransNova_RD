@@ -24,9 +24,7 @@ namespace CapaNegocios.Transportes
         }
 
         public int Capacidad { get; set; }
-
-        // La Placa es opcional (puede ser null)
-        public string? Placa { get; set; }
+  
 
         private decimal _tarifa;
         public decimal Tarifa
