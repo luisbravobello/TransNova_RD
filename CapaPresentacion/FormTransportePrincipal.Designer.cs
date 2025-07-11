@@ -267,6 +267,7 @@
             Controls.Add(cmbTipo);
             Controls.Add(dgvTransportes);
             Controls.Add(panelMenuLateral);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "FormTransportePrincipal";
             Opacity = 0.95D;
             StartPosition = FormStartPosition.CenterScreen;
