@@ -4,7 +4,7 @@ namespace CapaNegocios.Transportes
 {
     public abstract class Transporte
     {
-        // Propiedades comunes (con encapsulación)
+        // Propiedades comunes 
         public int Id { get; set; }
         public string Tipo { get; set; }
         public string Ruta { get; set; }
