@@ -39,15 +39,17 @@ namespace CapaPresentacion
         {
             var lugares = new List<string>
             {
-                "Santo Domingo", "Santiago", "Punta Cana", "Puerto Plata", "La Romana", "Moca",
-                "San Francisco de Macorís", "San Cristóbal", "Barahona", "La Vega", "Boca Chica",
-                "Higuey", "Samaná", "Jarabacoa", "Juan Dolio", "Constanza", "Las Terrenas", "Bani",
-                "Monte Cristi", "Pedernales", "El Seibo", "Azua", "San Juan de la Maguana",
-                "San Pedro de Macorís", "Cotuí", "Hato Mayor del Rey", "Cabo Rojo",
-                "Las Galeras", "Sabana de la Mar", "Santiago Rodríguez", "Valverde Mao",
-                "Comendador", "Sánchez", "Tamayo", "Sabana Yegua", "Los Alcarrizos", "Los Cacaos",
-                "Sosúa", "Cabarete", "Río San Juan", "El Catey", "Punta Rucia", "Pueblo Viejo"
+              "Santo Domingo", "Santiago", "Punta Cana", "Puerto Plata", "La Romana", "Moca",
+               "San Francisco de Macorís", "San Cristóbal", "Barahona", "La Vega", "Boca Chica",
+               "Higuey", "Samaná", "Jarabacoa", "Juan Dolio", "Constanza", "Las Terrenas", "Baní",
+               "Monte Cristi", "Pedernales", "El Seibo", "Azua", "San Juan de la Maguana",
+               "San Pedro de Macorís", "Cotuí", "Hato Mayor del Rey", "Cabo Rojo",
+               "Las Galeras", "Sabana de la Mar", "Santiago Rodríguez", "Valverde Mao",
+               "Comendador", "Sánchez", "Tamayo", "Sabana Yegua", "Los Alcarrizos", "Los Cacaos",
+               "Sosúa", "Cabarete", "Río San Juan", "El Catey", "Punta Rucia", "Pueblo Viejo",
+               "La Otra Banda", "La Altagracia"
             };
+
 
             cmbLugarInicio.Items.AddRange(lugares.ToArray());
             cmbDestinoFinal.Items.AddRange(lugares.ToArray());
